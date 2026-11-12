@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sona Assignment Nxtwave</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f5f2;--card:#fffefc;--ink:#171717;--mut:#5f6368;--bd:#e2e0da;--pri:#0f6b5f;--prib:#d9efe9;--ok:#0b8f5a;--okb:#dff5ea;--wrn:#9a5b00;--wrnb:#fff0d0;--bad:#c62d2d;--badb:#fde8e8;--gry:#eef0f5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#121413;--card:#1a1d1b;--ink:#eef1ef;--mut:#a3aaa6;--bd:#2c312e;--pri:#5fd3bf;--prib:#173a34;--ok:#4fd69a;--okb:#0f2f22;--wrn:#f3be5c;--wrnb:#352910;--bad:#ff8a80;--badb:#3a1a1a;--gry:#1d2640}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#121413;--card:#1a1d1b;--ink:#eef1ef;--mut:#a3aaa6;--bd:#2c312e;--pri:#5fd3bf;--prib:#173a34;--ok:#4fd69a;--okb:#0f2f22;--wrn:#f3be5c;--wrnb:#352910;--bad:#ff8a80;--badb:#3a1a1a;--gry:#1d2640}
+*{box-sizing:border-box}html,body{height:auto;margin:0}body{background:var(--bg);color:var(--ink);font:14.5px/1.55 "Schibsted Grotesk",system-ui,sans-serif}
+header{background:var(--card);border-bottom:1px solid var(--bd);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.hd{max-width:1000px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{font-weight:800;font-size:19px;letter-spacing:.5px}.brand span{color:var(--pri)}
+.seg{display:flex;background:var(--gry);border-radius:10px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:none;color:var(--mut);font:inherit;font-weight:600;padding:6px 12px;border-radius:8px;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+main{max-width:1000px;margin:0 auto;padding:16px}
+.sub{display:flex;gap:14px;border-bottom:1px solid var(--bd);margin-bottom:16px;flex-wrap:wrap;align-items:center}
+.sub button{border:0;background:none;font:inherit;font-weight:600;color:var(--mut);padding:8px 2px;cursor:pointer;border-bottom:2px solid transparent}
+.sub button.on{color:var(--pri);border-color:var(--pri)}.sub .sp{margin-left:auto;padding-bottom:6px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:16px;margin-bottom:14px}
+h2{font-size:20px;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}h3{font-size:14.5px;margin:0 0 6px;font-weight:700}p{margin:0 0 10px}.m{color:var(--mut);font-size:13px}
+.btn,select,textarea{font:inherit;border:1px solid var(--bd);background:var(--card);color:var(--ink);border-radius:8px;padding:7px 13px}
+.btn{cursor:pointer;font-weight:600}.btn:focus-visible,select:focus-visible,.sub button:focus-visible,.seg button:focus-visible{outline:2px solid var(--pri);outline-offset:2px}
+.btn.p{background:var(--pri);border-color:var(--pri);color:#fff}.btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}.btn.bad{background:var(--bad);border-color:var(--bad);color:#fff}.btn.w{background:var(--wrn);border-color:var(--wrn);color:#fff}
+:root[data-theme="dark"] .btn.p,:root[data-theme="dark"] .btn.ok,:root[data-theme="dark"] .btn.w,:root[data-theme="dark"] .btn.bad{color:#0c1220}
+textarea{width:100%;resize:vertical;margin:8px 0}
+.pill{display:inline-block;border-radius:6px;padding:2px 9px;font-size:12px;font-weight:700}
+.p-ELIGIBLE{background:var(--prib);color:var(--pri)}.p-BOOKED,.p-RETAKE{background:var(--wrnb);color:var(--wrn)}.p-PASSED{background:var(--okb);color:var(--ok)}.p-FAILED,.p-NULLIFIED{background:var(--badb);color:var(--bad)}.p-NOT_ELIGIBLE{background:var(--gry);color:var(--mut)}
+.hero{border-left:5px solid var(--pri)}.hero.PASSED{border-color:var(--ok)}.hero.FAILED,.hero.NULLIFIED{border-color:var(--bad)}.hero.RETAKE,.hero.BOOKED{border-color:var(--wrn)}.hero.NOT_ELIGIBLE{border-color:var(--bd)}
+.steps{display:flex;gap:0;margin:12px 0 4px}.st{flex:1;text-align:center;font-size:12px;color:var(--mut);position:relative}
+.st i{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--gry);margin:0 auto 4px;font-style:normal;font-weight:700;position:relative;z-index:1}
+.st:not(:last-child)::after{content:"";position:absolute;top:12px;left:50%;width:100%;height:2px;background:var(--bd)}
+.st.d i{background:var(--ok);color:#fff}.st.a i{background:var(--pri);color:#fff}.st.x i{background:var(--bad);color:#fff}.st.d,.st.a,.st.x{color:var(--ink);font-weight:600}
+.row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 0;border-top:1px solid var(--bd)}.row:first-child{border-top:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.grid>div>.card:last-child{margin-bottom:0}
+.col h3.tag{background:var(--gry);padding:6px 10px;border-radius:8px;margin-bottom:10px}
+.medal{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:26px;background:var(--gry);filter:grayscale(1);opacity:.55;flex:none}.medal.on{background:var(--okb);filter:none;opacity:1}.medal.pend{background:var(--wrnb);filter:none;opacity:1}.medal.bad{background:var(--badb);filter:none;opacity:1}
+.flex{display:flex;gap:14px;align-items:center}.ck{color:var(--ok);font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:14px}.stat{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 12px}.stat b{font-size:24px;display:block}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13.5px}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--bd);white-space:nowrap}th{color:var(--mut);font-weight:600}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;max-width:90%;display:none;z-index:9}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+</style></head><body>
+<header><div class="hd"><div class="brand">GRIT<span>.</span> Interviews</div><div class="seg" id="roles"></div></div></header>
+<main id="app"></main><div class="toast" id="toast" role="status"></div>
+<script>
+const DAYS=["Wed 11 Nov","Thu 12 Nov","Fri 13 Nov","Sat 14 Nov","Mon 16 Nov","Tue 17 Nov","Fri 20 Nov","Sat 21 Nov"],DN=[11,12,13,14,16,17,20,21],TIMES=["10:00 AM","11:00 AM","2:00 PM","4:00 PM"],TH=[10,11,14,16];
+const NOW=12*24+16.5,CH=24,CDN=24,CDR=7*24,CDF=14*24,MAXA=3,MILES=150,BADGE="AI Product Mastery Novice";
+const IV={m:"Meera Iyer",r:"Rahul Verma"},SK=["Computational Thinking (L1)","CS Fundamentals (L1)","Applied Gen AI Development (L1)","UI Engineering (L2)"],N=SK.length;
+const L={NOT_ELIGIBLE:"Not eligible",ELIGIBLE:"Eligible, not booked",BOOKED:"Booked",PASSED:"Passed",FAILED:"Failed",RETAKE:"Retake later",NULLIFIED:"Badge nullified"};
+const TT={ELIGIBLE:"You can book your interview now",BOOKED:"Your interview is booked",PASSED:"You earned your badge",RETAKE:"Not this time, but you’re close",FAILED:"Your interview result",NULLIFIED:"Badge withdrawn",CANCELLED:"Interview cancelled",MISSED:"Interview missed",REMIND:"Reminder: book your interview"};
+const ts=x=>DN[DAYS.indexOf(x.d)]*24+TH[TIMES.indexOf(x.t)];
+const fd=t=>{const d=new Date(2026,10,Math.floor(t/24));return["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][d.getDay()]+" "+d.getDate()+" "+["Nov","Dec"][d.getMonth()-10]};
+const S={role:"student",tab:"home",me:"s1",iv:"m",day:"Thu 12 Nov",flt:"ALL",cmp:"PASSED",nid:20,cfk:0,nt:{},inbox:{},
+students:[{id:"s1",name:"Sona",state:"ELIGIBLE",done:4,es:6,att:0,cd:0},{id:"s2",name:"Chiku",state:"BOOKED",done:4,es:9,att:0,cd:0},{id:"s3",name:"Virat",state:"PASSED",done:4,es:1,att:0,cd:0},{id:"s4",name:"Dhoni",state:"RETAKE",done:4,es:2,att:0,rf:1,cd:19*24+16},{id:"s5",name:"Sam",state:"NOT_ELIGIBLE",done:2,att:0,cd:0},{id:"s6",name:"Fatima Sheikh",state:"ELIGIBLE",done:4,es:8,att:0,cd:0},{id:"s7",name:"Arjun Pillai",state:"FAILED",done:4,es:1,att:1,cd:25*24+16}],
+slots:[{id:1,iv:"m",d:"Thu 12 Nov",t:"4:00 PM",st:"s2"},{id:2,iv:"m",d:"Thu 12 Nov",t:"10:00 AM"},{id:3,iv:"m",d:"Fri 13 Nov",t:"11:00 AM"},{id:4,iv:"r",d:"Fri 13 Nov",t:"2:00 PM"},{id:5,iv:"r",d:"Sat 14 Nov",t:"10:00 AM"},{id:6,iv:"r",d:"Wed 11 Nov",t:"11:00 AM",st:"s3",done:1,out:"PASSED"},{id:7,iv:"r",d:"Wed 11 Nov",t:"4:00 PM",st:"s7",done:1,out:"FAILED"},{id:8,iv:"m",d:"Fri 20 Nov",t:"10:00 AM"},{id:9,iv:"r",d:"Fri 20 Nov",t:"2:00 PM"},{id:10,iv:"m",d:"Mon 16 Nov",t:"2:00 PM"}]};
+const $=i=>document.getElementById(i),stu=i=>S.students.find(s=>s.id===i),slot=i=>S.slots.find(s=>s.id===i),ord=ts,mine=id=>S.slots.find(x=>x.st===id&&!x.done),back=s=>s.rf?"RETAKE":"ELIGIBLE";
+const toast=m=>{const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(t.h);t.h=setTimeout(()=>t.style.display="none",4200)};
+const pill=s=>`<span class="pill p-${s}">${L[s]}</span>`,set=(k,v)=>{S[k]=v;S.cfk=0;render()};
+const cf=(k,m)=>{if(S.cfk===k){S.cfk=0;return true}S.cfk=k;toast(m+" Tap again to confirm.");render();return false},cfl=(k,l)=>S.cfk===k?"Tap to confirm":l;
+const note=(id,k,b)=>{(S.inbox[id]=S.inbox[id]||[]).push({k,b})};
+const MSG={
+ELIGIBLE:n=>`${n}, you’ve cleared every skill for the ${BADGE} badge. The last step is a 30-minute interview. Pick a slot that suits you.`,
+BOOKED:(n,s,x)=>`Your interview is booked for ${x.d}, ${x.t} IST with ${IV[x.iv]}. Your joining link will appear here 10 minutes before the start. You can reschedule free of charge until ${fd(ts(x)-CH)}, ${x.t}.`,
+PASSED:n=>`Congratulations, ${n}! You passed your interview and earned the ${BADGE} badge. +${MILES} miles are now on your profile and the leaderboard.`,
+RETAKE:(n,s)=>`You’re close, ${n}. Your interviewer recommends a retake. Your cleared skills stay safe. You can book a new slot from ${fd(s.cd)}.`,
+FAILED:(n,s)=>`Thanks for interviewing, ${n}. The badge was not awarded this time. Your cleared skills are unchanged. ${s.att>=MAXA?"The interview team will contact you about next steps.":"You can book your next attempt from "+fd(s.cd)+"."}`,
+NULLIFIED:n=>`${n}, your ${BADGE} badge has been withdrawn after a review found a rule violation, and its ${MILES} miles were removed. If you think this is a mistake, contact the interview team.`,
+CANCELLED:(n,s,x)=>`Your interview on ${x.d}, ${x.t} was cancelled by the interviewer. It does not count as an attempt, and you are first in line for the next slots.`,
+MISSED:(n,s,x)=>`Your interview on ${x.d}, ${x.t} was missed or cancelled less than 24 hours before the start. You can book again from ${fd(s.cd)}.`,
+REMIND:n=>`Hi ${n}, your interview slot is still unbooked. Slots fill up fast and the badge deadline is 31 Dec 2026.`};
+S.students.forEach(s=>{if(s.state!=="NOT_ELIGIBLE")note(s.id,"ELIGIBLE",MSG.ELIGIBLE(s.name));if(s.state==="BOOKED")note(s.id,"BOOKED",MSG.BOOKED(s.name,s,mine(s.id)));if(["PASSED","RETAKE","FAILED","NULLIFIED"].includes(s.state))note(s.id,s.state,MSG[s.state](s.name,s))});
+const INIT=JSON.stringify(S);
+function reset(){Object.keys(S).forEach(k=>delete S[k]);Object.assign(S,JSON.parse(INIT));render();toast("Demo reset.")}
+function race(){S.race=1;toast("Demo on: the next slot you pick is taken by another student first.")}
+function book(id){const s=stu(S.me),x=slot(id);if(S.race&&S.me!=="s6"&&stu("s6").state==="ELIGIBLE"){S.race=0;x.st="s6";stu("s6").state="BOOKED"}
+ if(x.st){toast("That slot was just taken. Please pick another.");return render()}
+ x.st=s.id;s.state="BOOKED";s.pri=0;note(s.id,"BOOKED",MSG.BOOKED(s.name,s,x));toast("Interview booked. Check your inbox.");render()}
+function cancel(){const s=stu(S.me),x=mine(s.id),late=ts(x)-NOW<CH;if(late&&!cf("c","Cancelling under 24 hours before counts as a missed interview."))return;
+ delete x.st;s.state=back(s);if(late){s.cd=NOW+CDN;note(s.id,"MISSED",MSG.MISSED(s.name,s,x))}toast(late?"Booking cancelled. Counted as a missed interview.":"Booking cancelled. Book a new slot to keep your badge on track.");render()}
+function outcome(id,r){const x=slot(id),s=stu(x.st);if(r==="FAILED"&&!cf("f"+id,"Fail closes this attempt for 14 days."))return;
+ x.done=1;x.out=r;x.note=S.nt[id]||"";s.state=r;
+ if(r==="RETAKE"){s.rf=1;s.cd=ts(x)+CDR}if(r==="FAILED"){s.att++;s.cd=s.att>=MAXA?1e9:ts(x)+CDF}if(r==="PASSED")s.cd=0;
+ note(s.id,r,MSG[r](s.name,s));toast(`Result saved. ${s.name} will see it on the dashboard.`);render()}
+function noshow(id){const x=slot(id),s=stu(x.st);x.done=1;x.out="NOSHOW";s.state=back(s);s.cd=ts(x)+CDN;note(s.id,"MISSED",MSG.MISSED(s.name,s,x));toast(`Marked as no-show. ${s.name} can book again from ${fd(s.cd)}.`);render()}
+function flag(id){if(!cf("g"+id,"This withdraws the badge and removes its miles."))return;const s=stu(id);s.state="NULLIFIED";note(id,"NULLIFIED",MSG.NULLIFIED(s.name));toast("Malpractice flagged. Badge nullified and the student is notified.");render()}
+function unbook(x){const s=stu(x.st);delete x.st;s.state=back(s);s.cd=0;s.pri=1;note(s.id,"CANCELLED",MSG.CANCELLED(s.name,s,x))}
+function icancel(id){if(!cf("ic"+id,"The student is notified and moved to the front of the queue."))return;const x=slot(id);unbook(x);S.slots=S.slots.filter(z=>z!==x);toast("Interview cancelled. Student notified.");render()}
+function blockDay(){const a=S.slots.filter(x=>x.iv===S.iv&&x.d===S.day&&!x.done);if(!a.length)return toast("Nothing to block on this day.");if(a.some(x=>x.st)&&!cf("b","Booked students are notified."))return;a.forEach(x=>x.st&&unbook(x));S.slots=S.slots.filter(x=>!a.includes(x));toast("Day blocked.");render()}
+function addSlot(){const d=$("nd").value,t=$("nt").value;if(ts({d,t})<=NOW)return toast("That time has already passed.");if(S.slots.some(x=>x.iv===S.iv&&x.d===d&&x.t===t))return toast("You already have availability at that time.");S.slots.push({id:S.nid++,iv:S.iv,d,t});S.day=d;toast("Availability added.");render()}
+function rm(id){S.slots=S.slots.filter(x=>x.id!==id);render()}
+function remind(id){const s=stu(id);note(id,"REMIND",MSG.REMIND(s.name));toast(`Reminder sent to ${s.name}.`)}
+function remindAll(){const a=S.students.filter(s=>["ELIGIBLE","RETAKE"].includes(s.state));a.forEach(s=>note(s.id,"REMIND",MSG.REMIND(s.name)));toast(`Reminder sent to ${a.length} students.`)}
+function steps(st){const m={NOT_ELIGIBLE:"appp",ELIGIBLE:"dapp",BOOKED:"ddap",PASSED:"dddd",RETAKE:"dapp",FAILED:"dddx",NULLIFIED:"dddx"}[st],n=["Clear skills","Book interview","Interview","Badge"];
+ return `<div class="steps">${[...m].map((c,i)=>`<div class="st ${c==="p"?"":c==="x"&&i<3?"":c}"><i>${c==="d"?"✓":c==="x"?"!":i+1}</i>${n[i]}</div>`).join("")}</div>`}
+function home(st,s,x){const bb=`<button class="btn p" onclick="set('tab','book')">`,hs={
+NOT_ELIGIBLE:`<h2>Your interview is locked</h2><p>Clear ${N-s.done} more skill contest${N-s.done>1?"s":""} to unlock your ${BADGE} interview.</p>`,
+ELIGIBLE:s.cd>NOW?`<h2>You can book again soon</h2><p>Your last booking was missed or cancelled late. You can book a new slot from ${fd(s.cd)}.</p>`:`<h2>You’re ready for your interview</h2><p>${MSG.ELIGIBLE(s.name.split(" ")[0])}</p>${bb}Book interview</button>`,
+BOOKED:`<h2>Interview booked</h2><p>${x?MSG.BOOKED(s.name,s,x):""}</p><button class="btn" onclick="set('tab','book')">View or reschedule</button>`,
+PASSED:`<h2>Badge earned</h2><p>${MSG.PASSED(s.name)}</p><button class="btn" onclick="set('tab','profile')">View badge</button>`,
+RETAKE:`<h2>Retake recommended</h2><p>${MSG.RETAKE(s.name,s)}</p>${bb}See retake slots</button>`,
+FAILED:`<h2>Result: not passed</h2><p>${MSG.FAILED(s.name,s)}</p>${s.att<MAXA?bb+"See next attempt</button>":""}`,
+NULLIFIED:`<h2>Badge withdrawn</h2><p>${MSG.NULLIFIED(s.name)}</p>`}[st];
+ return `<div class="card hero ${st}"><div style="margin-bottom:8px">${pill(st)}</div>${hs}${steps(st)}</div>
+ <div class="card"><h3>Skills for this badge</h3>${SK.map((k,i)=>`<div class="row"><span>${k}</span>${i<s.done?'<span class="ck">Cleared ✓</span>':'<span class="m">Pending</span>'}</div>`).join("")}</div>`}
+function lb(st,n){const me=420+(st==="PASSED"?MILES:0),r=[["Meghana B.",610],["Harsh V.",540],["Lakshmi T.",480],[n,me],["Naveen G.",400]].sort((a,b)=>b[1]-a[1]),
+ t={PASSED:`+${MILES} miles added after the pass.`,BOOKED:`+${MILES} miles pending the interview result.`,NULLIFIED:`${MILES} miles removed with the badge.`}[st]||"Badge miles are added once you pass the interview.";
+ return `<div class="card"><h3>Leaderboard</h3><div class="tw"><table>${r.map((z,i)=>`<tr><td>#${i+1}</td><td>${z[0]===n?"<b>"+z[0]+" (you)</b>":z[0]}</td><td>${z[1]} miles</td></tr>`).join("")}</table></div><p class="m" style="margin:8px 0 0">${t}</p></div>`}
+function prof(st,s){const c={PASSED:"on",BOOKED:"pend",RETAKE:"pend",FAILED:"bad",NULLIFIED:"bad"}[st]||"",t={PASSED:"Earned. Visible on your profile and the leaderboard.",BOOKED:"Pending interview result.",NOT_ELIGIBLE:"Locked until all skills are cleared.",ELIGIBLE:"Ready to unlock. Book your interview.",RETAKE:`Not earned yet. Retake from ${fd(s.cd)}.`,FAILED:s.att>=MAXA?"Not earned. The interview team will review next steps.":`Not earned. Next attempt from ${fd(s.cd)}.`,NULLIFIED:"Withdrawn after review. No longer shown on your profile."}[st];
+ return `<div class="card"><h3>${s.name}’s profile</h3><div class="flex"><div class="medal ${c}">N</div><div><b>${BADGE} Badge</b><div class="m">${t}</div></div></div></div>${lb(st,s.name)}`}
+function inbox(s){const a=(S.inbox[s.id]||[]).slice().reverse();return `<div class="card"><h2>Inbox</h2><p class="m">Messages about your interview. Newest first.</p>${a.length?a.map(m=>`<div class="row" style="display:block"><b>${TT[m.k]}</b><p style="margin:2px 0 0">${m.b}</p></div>`).join(""):'<p class="m">No messages yet.</p>'}</div>`}
+function book_(s){const st=s.state,x=mine(s.id);
+ if(st==="BOOKED"&&x)return `<div class="card hero BOOKED"><h2>Your interview</h2><p><b>${x.d}, ${x.t} IST</b> with ${IV[x.iv]}, 30 minutes, online</p><p class="m">Join link opens 10 minutes before. Free reschedule until ${fd(ts(x)-CH)}, ${x.t}. After that, cancelling counts as a missed interview. Keep your camera on and your ID ready.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn p" ${ts(x)-NOW<=1/6?"":"disabled"} onclick="toast('Opening your interview room…')">Join interview</button>${ts(x)>NOW?`<button class="btn bad" onclick="cancel()">${cfl("c","Cancel booking")}</button>`:""}</div></div>`;
+ if(!["ELIGIBLE","RETAKE","FAILED"].includes(st)||(st==="FAILED"&&s.att>=MAXA))return `<div class="card"><h2>Interview booking</h2><p class="m">${{NOT_ELIGIBLE:"Booking opens when you clear every skill for this badge.",PASSED:"You have already passed. No booking is needed.",FAILED:"You have used all 3 attempts. The interview team will contact you.",NULLIFIED:"Booking is closed for this badge."}[st]}</p></div>`;
+ const f=S.slots.filter(z=>!z.st&&!z.done&&ts(z)>=Math.max(NOW,s.cd)).sort((a,b)=>ts(a)-ts(b));
+ return `<div class="card"><h2>${st==="ELIGIBLE"?"Book your interview":"Book your next attempt"}</h2><p class="m">Pick one slot. Each interview is 30 minutes, online. All times IST.${s.cd>NOW?" Your next attempt opens "+fd(s.cd)+".":""}${s.att?" Attempt "+(s.att+1)+" of "+MAXA+".":""}</p>${f.length?DAYS.filter(d=>f.some(z=>z.d===d)).map(d=>`<div class="row" style="display:block"><b>${d}</b><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">${f.filter(z=>z.d===d).map(z=>`<button class="btn" onclick="book(${z.id})">${z.t} with ${IV[z.iv].split(" ")[0]}</button>`).join("")}</div></div>`).join(""):'<p class="m">No open slots yet. The interview team adds slots regularly. Check back soon.</p>'}<p class="m" style="margin:12px 0 0"><button class="btn" onclick="race()">Demo: another student takes my slot first</button></p></div>`}
+function compare(s){const o=S.cmp,fk={...s,done:N,name:s.name.split(" ")[0],att:1,cd:o==="FAILED"?26*24+16:19*24+16},xb={d:"Thu 12 Nov",t:"4:00 PM",iv:"m"};
+ const col=(st,t,x)=>`<div class="col"><h3 class="tag">${t}</h3>${home(st,fk,x)}${prof(st,fk)}</div>`,
+ nx={PASSED:" · Flag malpractice available",RETAKE:" · reminder from "+fd(fk.cd),FAILED:" · next attempt "+fd(fk.cd),NULLIFIED:" · badge removed"}[o],
+ R=[["Student home","Interview booked, joining link shown",L[o]+" message and next step"],["Badge on profile","Pending interview result",{PASSED:"Earned",RETAKE:"Not earned, retake from "+fd(fk.cd),FAILED:"Not earned, next attempt "+fd(fk.cd),NULLIFIED:"Withdrawn"}[o]],["Leaderboard","420 miles, rank 4 (+150 pending)",{PASSED:"570 miles, rank 2",NULLIFIED:"420 miles, rank 4 (150 removed)"}[o]||"420 miles, rank 4 (no change)"],["Interviewer schedule",pill("BOOKED")+" with outcome buttons",pill(o)+" result and notes saved"],["Team dashboard",pill("BOOKED")+" Thu 12 Nov, 4:00 PM",pill(o)+nx],["Inbox","Interview booked","“"+TT[o]+"”"]];
+ return `<div class="card"><h3>Compare screens before and after the result</h3><div class="seg" style="display:inline-flex">${["PASSED","RETAKE","FAILED","NULLIFIED"].map(k=>`<button class="${o===k?"on":""}" onclick="set('cmp','${k}')">${L[k]}</button>`).join("")}</div></div><div class="grid">${col("BOOKED","Before result: interview booked",xb)}${col(o,"After result: "+L[o],null)}</div>
+ <div class="card" style="margin-top:14px"><h3>Where else the result shows up</h3><div class="tw"><table><tr><th>Screen</th><th>Before</th><th>After: ${L[o]}</th></tr>${R.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("")}</table></div></div>`}
+function student(){const s=stu(S.me),T=[["home","Home"],["book","Interview"],["inbox","Inbox ("+(S.inbox[s.id]||[]).length+")"],["profile","Profile & badge"],["cmp","Before / after"]];
+ const b={home:()=>home(s.state,s,mine(s.id)),book:()=>book_(s),inbox:()=>inbox(s),profile:()=>prof(s.state,s),cmp:()=>compare(s)}[S.tab]();
+ return `<div class="sub">${T.map(([k,v])=>`<button class="${S.tab===k?"on":""}" onclick="set('tab','${k}')">${v}</button>`).join("")}<span class="sp m">Viewing as <select onchange="set('me',this.value)">${S.students.map(z=>`<option value="${z.id}" ${z.id===S.me?"selected":""}>${z.name}</option>`).join("")}</select></span></div>${b}`}
+function interviewer(){const my=S.slots.filter(x=>x.iv===S.iv),day=my.filter(x=>x.d===S.day).sort((a,b)=>ts(a)-ts(b));
+ return `<div class="sub"><span class="m">Signed in as <select onchange="set('iv',this.value)">${Object.entries(IV).map(([k,v])=>`<option value="${k}" ${k===S.iv?"selected":""}>${v}</option>`).join("")}</select></span></div>
+ <div class="card"><h3>Set availability (IST)</h3><div style="display:flex;gap:8px;flex-wrap:wrap"><select id="nd">${DAYS.slice(1).map(d=>`<option value="${d}" ${d===S.day?"selected":""}>${d}</option>`).join("")}</select><select id="nt">${TIMES.map(t=>`<option>${t}</option>`).join("")}</select><button class="btn p" onclick="addSlot()">Add 30-min slot</button></div></div>
+ <div class="card"><div class="row" style="border:0;padding-top:0"><h2 style="margin:0">Daily schedule</h2><div style="display:flex;gap:8px;flex-wrap:wrap"><select onchange="set('day',this.value)">${DAYS.map(d=>`<option value="${d}" ${d===S.day?"selected":""}>${d} (${my.filter(x=>x.d===d).length})</option>`).join("")}</select><button class="btn" onclick="blockDay()">${cfl("b","Block this day")}</button></div></div>
+ ${day.length?day.map(x=>{const s=x.st&&stu(x.st);
+ if(!x.st)return `<div class="row"><div><b>${x.t}</b> <span class="m">Open, not booked${ts(x)<NOW?" · time passed":""}</span></div><button class="btn" onclick="rm(${x.id})">Remove</button></div>`;
+ if(x.done)return `<div class="row"><div><b>${x.t}</b> · ${s.name}<div class="m">${x.out==="NOSHOW"?"No-show":"Result recorded"}${x.note?": "+x.note:""}</div></div>${x.out==="NOSHOW"?'<span class="pill p-NOT_ELIGIBLE">No-show</span>':pill(x.out)}</div>`;
+ return `<div class="row" style="display:block"><div class="row" style="border:0;padding:0"><div><b>${x.t}</b> · ${s.name}<div class="m">${s.done}/${N} skills cleared, ${s.att?"Attempt "+(s.att+1)+" of "+MAXA:s.rf?"Retake attempt":"First attempt"}</div></div>${pill("BOOKED")}</div>${ts(x)<=NOW?`<textarea rows="2" oninput="S.nt[${x.id}]=this.value" placeholder="Interview notes (visible to the interview team only)">${S.nt[x.id]||""}</textarea><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ok" onclick="outcome(${x.id},'PASSED')">Pass</button><button class="btn w" onclick="outcome(${x.id},'RETAKE')">Retake later</button><button class="btn bad" onclick="outcome(${x.id},'FAILED')">${cfl("f"+x.id,"Fail")}</button><button class="btn" ${NOW>=ts(x)+1/6?"":"disabled"} onclick="noshow(${x.id})">Student didn’t show</button></div>`:`<p class="m" style="margin:8px 0">Outcome can be recorded once the interview starts.</p><button class="btn bad" onclick="icancel(${x.id})">${cfl("ic"+x.id,"Cancel and notify student")}</button>`}</div>`}).join(""):'<p class="m">No slots on this day. Add availability above.</p>'}</div>`}
+function team(){const c=(...k)=>S.students.filter(s=>k.includes(s.state)).length,f=S.flt,nb=c("ELIGIBLE","RETAKE"),bk=c("BOOKED");
+ const rows=S.students.filter(s=>f==="ALL"?s.state!=="NOT_ELIGIBLE":f==="NB"?["ELIGIBLE","RETAKE"].includes(s.state):s.state===f);
+ const ref=[["Not eligible","Skills still pending","All skills cleared → Eligible"],["Eligible","Can book a slot","Books → Booked"],["Booked","Slot reserved","Pass / Fail / Retake / No-show. Cancel 24h+ before is free; later counts as missed"],["Passed","Badge and miles awarded","Malpractice flagged → Nullified"],["Retake later","Waits 7 days, not counted as an attempt","Books again → Booked"],["Failed","Waits 14 days, max 3 attempts","Books again → Booked, or team review after 3"],["Badge nullified","Badge withdrawn, miles removed","Final unless appealed"]];
+ return `<div class="stats"><div class="stat"><b>${nb}</b>Awaiting booking</div><div class="stat"><b>${bk}</b>Booked</div><div class="stat"><b>${bk+nb?Math.round(bk/(bk+nb)*100):0}%</b>Booking rate</div><div class="stat"><b>${c("PASSED")}</b>Passed</div><div class="stat"><b>${c("RETAKE","FAILED")}</b>Retake or failed</div></div>
+ <div class="card hero"><div class="row" style="border:0;padding:0"><div><b>Badge deadline: 31 Dec 2026</b>, 49 days left<div class="m">${nb} eligible students have not booked yet.</div></div><button class="btn p" onclick="remindAll()">Remind all not booked</button></div></div>
+ <div class="card"><div class="row" style="border:0;padding-top:0"><h2 style="margin:0">Eligible students</h2><select onchange="set('flt',this.value)">${[["ALL","All eligible"],["BOOKED","Booked"],["NB","Not booked"],["PASSED","Passed"],["RETAKE","Retake later"],["FAILED","Failed"],["NULLIFIED","Nullified"]].map(([k,v])=>`<option value="${k}" ${f===k?"selected":""}>${v}</option>`).join("")}</select></div>
+ <div class="tw"><table><tr><th>Student</th><th>Status</th><th>Waiting</th><th>Slot</th><th>Interviewer</th><th>Action</th></tr>${rows.map(s=>{const x=S.slots.find(z=>z.st===s.id&&!z.out)||S.slots.find(z=>z.st===s.id),nbk=["ELIGIBLE","RETAKE"].includes(s.state);return `<tr><td>${s.name}</td><td>${pill(s.state)}${s.pri?' <span class="pill p-BOOKED">Priority</span>':""}</td><td>${nbk&&s.es?(12-s.es)+" days":"-"}</td><td>${x?x.d+", "+x.t:"Not booked"}</td><td>${x?IV[x.iv]:"-"}</td><td>${nbk?`<button class="btn" onclick="remind('${s.id}')">Send reminder</button>`:s.state==="PASSED"?`<button class="btn bad" onclick="flag('${s.id}')">${cfl("g"+s.id,"Flag malpractice")}</button>`:s.state==="FAILED"?(s.att>=MAXA?"Team review":"Next attempt "+fd(s.cd)):"-"}</td></tr>`}).join("")}</table></div></div>
+ <div class="card"><h3>Interview journey: states and transitions</h3><div class="tw"><table><tr><th>State</th><th>Meaning</th><th>What moves it on</th></tr>${ref.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("")}</table></div></div>`}
+function render(){$("roles").innerHTML=[["student","Student"],["interviewer","Interviewer"],["team","Interview team"]].map(([k,v])=>`<button class="${S.role===k?"on":""}" onclick="set('role','${k}')">${v}</button>`).join("");
+ $("app").innerHTML=`<div class="card m" style="display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:10px 14px"><span>Demo time: Thu 12 Nov, 4:30 PM IST</span><button class="btn" onclick="reset()">Reset demo</button></div>`+{student,interviewer,team}[S.role]()}
+render();
+</script></body></html>
